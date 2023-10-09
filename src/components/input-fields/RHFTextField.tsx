@@ -1,4 +1,4 @@
-import {TextInputProps} from 'react-native';
+import {StyleSheet, TextInputProps} from 'react-native';
 
 import {FieldValues, useController, UseControllerProps} from 'react-hook-form';
 
@@ -22,6 +22,7 @@ export const RHFTextField = <T extends FieldValues>({
 
   return (
     <TextFieldBase
+      style={styles.input}
       {...field}
       {...props}
       ref={fieldReference}
@@ -32,3 +33,7 @@ export const RHFTextField = <T extends FieldValues>({
     />
   );
 };
+
+const styles = StyleSheet.create({
+  input: {borderBottomWidth: 1, borderBottomColor: 'black'},
+});

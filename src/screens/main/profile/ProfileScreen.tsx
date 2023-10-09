@@ -22,7 +22,7 @@ export const ProfileScreen: FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Profile!</Text>
+      <Text style={styles.text}>Profile Screen!</Text>
       <Button
         type="outlined"
         label="Cerrar sesión"
@@ -38,5 +38,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  text: {
+    fontFamily: 'Poppins-Medium',
+    fontSize: 20,
   },
 });

@@ -10,8 +10,8 @@ type Props = {
 };
 
 export const HomeDashboard: FC<Props> = ({name, services}) => {
-  const handleServicePress = (id: string, title: string) => {
-    console.log('PRESIONE:', id, title);
+  const handleServicePress = (_id: string, title: string) => {
+    console.log('PRESIONE:', title);
   };
 
   return (

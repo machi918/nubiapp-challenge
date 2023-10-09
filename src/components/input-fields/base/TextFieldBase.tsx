@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
   helperText: {
     fontSize: 12,
     color: 'black',
-    backgroundColor: 'cyan',
   },
   errorText: {
     color: 'red',

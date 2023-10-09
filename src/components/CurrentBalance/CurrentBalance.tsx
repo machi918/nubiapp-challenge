@@ -1,6 +1,7 @@
 import {Button} from 'components/Button/Button';
 import {FC, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
 
 type Props = {
   name: string;
@@ -21,7 +22,7 @@ export const CurrentBalance: FC<Props> = ({
     <View style={styles.container}>
       <Text style={styles.welcomeTitle}>Hola {name} tu saldo es</Text>
       <View style={styles.balanceContainer}>
-        <View style={{height: 50, width: 50}} />
+        <View style={styles.iconContainer} />
         <Text>
           ${' '}
           {
@@ -35,20 +36,28 @@ export const CurrentBalance: FC<Props> = ({
             </Text>
           }
         </Text>
-        <View style={{height: 50, width: 50, backgroundColor: 'red'}} />
+        <Pressable
+          style={styles.iconContainer}
+          onPress={() => setShowBalance(prevValue => !prevValue)}>
+          <Icon
+            name={showBalance ? 'eye' : 'eye-with-line'}
+            size={30}
+            color="black"
+          />
+        </Pressable>
       </View>
       <View style={styles.buttonsContainer}>
         <Button
-          label="Cargá plata"
+          label="+ Cargá plata"
           type="contained"
           size="small"
           onPress={onLoadMoneyPressed}
         />
 
         <Button
-          label="Retirá plata"
+          label="- Retirá plata"
           type="contained"
-          style={{backgroundColor: 'red'}}
+          style={styles.customButton}
           size="small"
           onPress={onWithdrawMoneyPressed}
         />
@@ -72,6 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
+    height: 50,
   },
   balanceText: {
     fontFamily: 'Poppins-Medium',
@@ -87,8 +97,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    // justifyContent: 'space-between',
     gap: 10,
     width: '100%',
+    marginTop: 10,
+  },
+  iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 50,
+  },
+  customButton: {
+    backgroundColor: '#2DDCB4',
   },
 });

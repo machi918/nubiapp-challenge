@@ -1,6 +1,6 @@
-import {CurrentBalance, HomeDashboard, Movements} from 'components';
+import {CurrentBalance, HomeDashboard, LogoHeader, Movements} from 'components';
 import {FC} from 'react';
-import {Text, StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import {useAppSelector} from 'redux/redux-hooks';
 
 export const HomeScreen: FC = () => {
@@ -8,8 +8,10 @@ export const HomeScreen: FC = () => {
   const userServices = useAppSelector(state => state.services);
 
   return (
-    <ScrollView style={{flex: 1}} contentContainerStyle={styles.container}>
-      <Text style={{fontFamily: 'Poppins-Bold', fontSize: 20}}>Home!</Text>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}>
+      <LogoHeader />
       <CurrentBalance
         name={userState.name}
         balance={7760}
@@ -24,6 +26,9 @@ export const HomeScreen: FC = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  contentContainer: {
     paddingBottom: 100,
     paddingHorizontal: 20,
     alignItems: 'center',
