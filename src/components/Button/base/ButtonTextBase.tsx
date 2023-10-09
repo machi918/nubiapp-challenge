@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 
 import {COMMON_BUTTON_STYLES} from './constants';
@@ -14,11 +15,13 @@ type ButtonProps = TouchableOpacityProps & {
    * @default size big
    */
   size: 'big' | 'medium' | 'small';
+  isLoading: boolean;
 };
 
 export const ButtonTextBase: FC<ButtonProps> = ({
   label,
   size = 'big',
+  isLoading,
   ...props
 }) => {
   return (
@@ -31,14 +34,18 @@ export const ButtonTextBase: FC<ButtonProps> = ({
         size === 'small' && COMMON_BUTTON_STYLES.containerSMALL,
         props.style,
       ]}>
-      <Text
-        style={[
-          COMMON_BUTTON_STYLES.labelBIG,
-          size === 'medium' && COMMON_BUTTON_STYLES.labelMEDIUM,
-          size === 'small' && COMMON_BUTTON_STYLES.labelSMALL,
-        ]}>
-        {label}
-      </Text>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <Text
+          style={[
+            COMMON_BUTTON_STYLES.labelBIG,
+            size === 'medium' && COMMON_BUTTON_STYLES.labelMEDIUM,
+            size === 'small' && COMMON_BUTTON_STYLES.labelSMALL,
+          ]}>
+          {label}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };

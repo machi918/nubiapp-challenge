@@ -6,9 +6,10 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 
 import {useAppDispatch} from 'redux/redux-hooks';
-import {modifyUser} from 'redux/slices/userSlice';
+import {modifyUser, setUser} from 'redux/slices/userSlice';
 import {RHFPasswordField, RHFTextField} from 'components/input-fields';
 import {Button} from 'components';
+import {User} from 'services/api';
 
 export const signInValidationSchema = yup.object().shape({
   email: yup
@@ -41,16 +42,19 @@ export const SignInScreen: FC = () => {
 
   const handleFormSubmit = async (data: signInValidationType) => {
     const {email, password} = data;
-    console.log('LOGIN data:', email, password);
-    dispath(modifyUser({token: 'asdasdasdasd'}));
+    console.log('LOGIN data:', email, password, formState.isLoading);
+    const response = await User.signIn(data);
+    const userData = await User.decodeJWT(response?.JWT);
+    console.log('ME LOGUEO:', userData);
+    if (userData) {
+      dispath(setUser({...userData, token: response?.JWT}));
+    }
   };
 
   return (
     <View
       style={{
         flex: 1,
-        // alignItems: 'center',
-        // justifyContent: 'center',
         backgroundColor: '#202BCE',
       }}>
       <View
@@ -91,6 +95,7 @@ export const SignInScreen: FC = () => {
           label="Iniciar Sesión"
           type="contained"
           size="big"
+          isLoading={formState.isSubmitting || formState.isLoading}
           onPress={handleSubmit(async values => {
             await handleFormSubmit(values);
           })}
