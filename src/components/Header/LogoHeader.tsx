@@ -1,9 +1,20 @@
 import {FC} from 'react';
-import {View, Image} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+
+import {CompleteLogoIcon} from 'assets/icons';
+
 export const LogoHeader: FC = () => {
   return (
-    <View>
-      <Image source={require('')} />
+    <View style={styles.container}>
+      <CompleteLogoIcon />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
