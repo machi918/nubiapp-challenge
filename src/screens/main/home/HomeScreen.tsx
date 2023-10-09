@@ -4,7 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 export const HomeScreen: FC = () => {
   return (
     <View style={styles.container}>
-      <Text>Home!</Text>
+      <Text style={{fontFamily: 'Poppins-Bold', fontSize: 20}}>Home!</Text>
     </View>
   );
 };
