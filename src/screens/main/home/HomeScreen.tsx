@@ -12,7 +12,7 @@ export const HomeScreen: FC = () => {
       <Text style={{fontFamily: 'Poppins-Bold', fontSize: 20}}>Home!</Text>
       <CurrentBalance
         name={userState.name}
-        balance={'123123'}
+        balance={7760}
         onLoadMoneyPressed={() => console.log('add money')}
         onWithdrawMoneyPressed={() => console.log('withdraw money')}
       />

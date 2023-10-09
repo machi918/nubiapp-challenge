@@ -25,7 +25,7 @@ export const navigationSlice = createSlice({
     removeRouteByName: (state, action: PayloadAction<string>) => {
       return state.filter(error => error.route !== action.payload);
     },
-    resetServicesState: () => initialState,
+    resetNavigationState: () => initialState,
   },
 });
 
@@ -34,7 +34,7 @@ export const {
   addRoute,
   removeRouteByID,
   removeRouteByName,
-  resetServicesState,
+  resetNavigationState,
 } = navigationSlice.actions;
 
 export default navigationSlice.reducer;

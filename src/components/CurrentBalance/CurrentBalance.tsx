@@ -4,7 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 
 type Props = {
   name: string;
-  balance: string; //Should be number
+  balance: number;
   onLoadMoneyPressed: () => void;
   onWithdrawMoneyPressed: () => void;
 };
@@ -22,7 +22,19 @@ export const CurrentBalance: FC<Props> = ({
       <Text style={styles.welcomeTitle}>Hola {name} tu saldo es</Text>
       <View style={styles.balanceContainer}>
         <View style={{height: 50, width: 50}} />
-        <Text>$ {showBalance ? balance : '*.****,**'}</Text>
+        <Text>
+          ${' '}
+          {
+            <Text style={styles.balanceText}>
+              {showBalance
+                ? balance.toLocaleString('es-AR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })
+                : '*.****,**'}
+            </Text>
+          }
+        </Text>
         <View style={{height: 50, width: 50, backgroundColor: 'red'}} />
       </View>
       <View style={styles.buttonsContainer}>
@@ -51,7 +63,6 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     padding: 20,
     marginVertical: 10,
-
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
@@ -61,6 +72,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
+  },
+  balanceText: {
+    fontFamily: 'Poppins-Medium',
+    fontSize: 40,
+    color: '#000000',
   },
   welcomeTitle: {
     fontFamily: 'Poppins-Regular',

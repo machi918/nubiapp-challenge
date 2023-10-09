@@ -66,7 +66,7 @@ export const TabBar: FC<BottomTabBarProps> = ({
 
 const styles = StyleSheet.create({
   tabContainer: {
-    backgroundColor: 'red',
+    backgroundColor: '#FFFFFF',
     position: 'absolute',
     bottom: 14,
     borderRadius: 16,
@@ -78,5 +78,13 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     zIndex: 1000,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });

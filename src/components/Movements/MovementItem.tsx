@@ -12,18 +12,20 @@ type Props = UserMovement & {
 export const MovementItem: FC<Props> = ({amount, date, title, extraData}) => {
   return (
     <View style={styles.container}>
-      <View
-        style={[
-          styles.iconContainer,
-          !!extraData && {backgroundColor: extraData?.color},
-        ]}>
-        <Text style={styles.iconText}>ico</Text>
+      <View style={styles.dataWrapper}>
+        <View
+          style={[
+            styles.iconContainer,
+            !!extraData && {backgroundColor: extraData?.color},
+          ]}>
+          <Text style={styles.iconText}>ico</Text>
+        </View>
+        <View>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.dateText}>{date}</Text>
+        </View>
       </View>
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.title}>{date}</Text>
-      </View>
-      <Text>{amount}</Text>
+      <Text style={styles.title}>{amount}</Text>
     </View>
   );
 };
@@ -35,9 +37,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'green',
+  },
+  dataWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   iconContainer: {
+    marginRight: 10,
     height: 50,
     width: 50,
     borderRadius: 14,
@@ -51,9 +57,13 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   title: {
-    textAlign: 'center',
-    fontSize: 12,
+    fontSize: 16,
     fontFamily: 'Poppins-Regular',
     color: 'black',
+    textTransform: 'capitalize',
+  },
+  dateText: {
+    fontSize: 14,
+    fontFamily: 'Poppins-Regular',
   },
 });
