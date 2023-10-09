@@ -1,7 +1,7 @@
 import service from 'services/axios-instance';
 import {JWTType} from 'services/config-types';
 import jwt_decode from 'jwt-decode';
-import {UserType} from 'types';
+import {SignInType} from 'types';
 
 const PATH = {
   signIn: '/login',
@@ -25,7 +25,7 @@ export abstract class User {
   };
 
   static decodeJWT = async (token: string) => {
-    const response: UserType = await jwt_decode(token);
+    const response: SignInType = await jwt_decode(token);
     return response;
   };
 }
