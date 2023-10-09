@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {UserMovement} from 'types';
+import Icon from 'react-native-vector-icons/Feather';
 
 type Props = UserMovement & {
   //   onPress: (id: string, title: string) => void;
@@ -9,16 +10,12 @@ type Props = UserMovement & {
 
 // TODO: DECIR QUE ESTA MAL AMOUNT
 
-export const MovementItem: FC<Props> = ({amount, date, title, extraData}) => {
+export const MovementItem: FC<Props> = ({amount, date, title}) => {
   return (
     <View style={styles.container}>
       <View style={styles.dataWrapper}>
-        <View
-          style={[
-            styles.iconContainer,
-            !!extraData && {backgroundColor: extraData?.color},
-          ]}>
-          <Text style={styles.iconText}>ico</Text>
+        <View style={styles.iconContainer}>
+          <Icon name="help-circle" size={24} />
         </View>
         <View>
           <Text style={styles.title}>{title}</Text>
@@ -48,7 +45,7 @@ const styles = StyleSheet.create({
     width: 50,
     borderRadius: 14,
     justifyContent: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#b3f5b0',
     alignItems: 'center',
   },
   iconText: {

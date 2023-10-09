@@ -1,4 +1,4 @@
-import {TextInputProps} from 'react-native';
+import {StyleSheet, TextInputProps} from 'react-native';
 
 import {FieldValues, useController, UseControllerProps} from 'react-hook-form';
 
@@ -30,7 +30,7 @@ export const RHFPasswordField = <T extends FieldValues>({
       {...field}
       {...props}
       ref={fieldReference}
-      //   value={field.value}
+      style={styles.input}
       textContentType="password"
       secureTextEntry={!showPassword}
       onChangeText={field.onChange}
@@ -40,3 +40,7 @@ export const RHFPasswordField = <T extends FieldValues>({
     />
   );
 };
+
+const styles = StyleSheet.create({
+  input: {borderBottomWidth: 1, borderBottomColor: 'black'},
+});

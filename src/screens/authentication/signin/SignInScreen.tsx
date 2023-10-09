@@ -3,7 +3,6 @@ import {View, Text} from 'react-native';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
-import * as yup from 'yup';
 
 import {useAppDispatch} from 'redux/redux-hooks';
 import {setUser} from 'redux/slices/userSlice';
@@ -12,22 +11,9 @@ import {Button} from 'components';
 import {User} from 'services/api';
 import {fillServices} from 'redux/slices/servicesSlice';
 import {useSecureStorage} from 'hooks/useSecureStorage';
-
-export const signInValidationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required('Requerido')
-    .email('Formato incorrecto')
-    .max(30, 'Este campo no puede tener más de 30 caracteres.'),
-  password: yup
-    .string()
-    .required('Requerido')
-    .max(99, 'Este campo no puede tener más de 99 caracteres.'),
-});
-
-export type signInValidationType = Required<
-  yup.InferType<typeof signInValidationSchema>
->;
+import {fillNavigationRoutes} from 'redux/slices/navigationSlice';
+import {signInValidationSchema, signInValidationType} from 'services/schemas';
+import {CompleteLogoIcon} from 'assets/icons';
 
 const defaultValues: signInValidationType = {
   email: '',
@@ -52,6 +38,11 @@ export const SignInScreen: FC = () => {
         return {id: Math.random().toString(), title: item, icon: 'none'};
       });
       dispath(fillServices(servicesDummyData));
+      dispath(
+        fillNavigationRoutes(
+          userData?.navigation?.map(item => item?.toLowerCase()) ?? [],
+        ),
+      );
       await setItem('token', response?.JWT);
     }
   };
@@ -67,11 +58,9 @@ export const SignInScreen: FC = () => {
           height: '20%',
           paddingHorizontal: 10,
           paddingTop: 20,
+          justifyContent: 'space-evenly',
         }}>
-        <Text
-          style={{fontFamily: 'Poppins-Bold', fontSize: 40, color: 'white'}}>
-          logo nubi
-        </Text>
+        <CompleteLogoIcon fill={'#FFFFFF'} />
         <Text
           style={{fontFamily: 'Poppins-Bold', fontSize: 20, color: 'white'}}>
           ¡Hola!
@@ -85,35 +74,40 @@ export const SignInScreen: FC = () => {
           borderTopLeftRadius: 14,
           paddingVertical: 16,
           paddingHorizontal: 10,
+          justifyContent: 'space-between',
         }}>
-        <RHFTextField
-          control={control}
-          name="email"
-          placeholder="Correo electrónico"
-        />
-        <RHFPasswordField
-          control={control}
-          name="password"
-          placeholder="Contraseña"
-        />
-        <Button
-          label="Iniciar Sesión"
-          type="contained"
-          size="big"
-          isLoading={formState.isSubmitting || formState.isLoading}
-          onPress={handleSubmit(async values => {
-            await handleFormSubmit(values);
-          })}
-          disabled={formState.isSubmitting}
-        />
-        <Button
-          label="¿No tenés cuenta? Regístrate"
-          type="outlined"
-          size="big"
-          style={{marginTop: 10}}
-          onPress={() => console.log('TOCO CUENTA')}
-          disabled={formState.isSubmitting}
-        />
+        <View>
+          <RHFTextField
+            control={control}
+            name="email"
+            placeholder="Correo electrónico"
+          />
+          <RHFPasswordField
+            control={control}
+            name="password"
+            placeholder="Contraseña"
+          />
+        </View>
+        <View>
+          <Button
+            label="Iniciar Sesión"
+            type="contained"
+            size="big"
+            isLoading={formState.isSubmitting || formState.isLoading}
+            onPress={handleSubmit(async values => {
+              await handleFormSubmit(values);
+            })}
+            disabled={formState.isSubmitting}
+          />
+          <Button
+            label="¿No tenés cuenta? Regístrate"
+            type="outlined"
+            size="big"
+            style={{marginTop: 10}}
+            onPress={() => console.log('TOCO CUENTA')}
+            disabled={formState.isSubmitting}
+          />
+        </View>
       </View>
     </View>
   );

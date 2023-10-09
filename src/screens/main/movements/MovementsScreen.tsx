@@ -1,6 +1,7 @@
+import {Header} from 'components';
 import {MovementItem} from 'components/Movements/MovementItem';
 import {FC, useCallback} from 'react';
-import {Text, StyleSheet, FlatList, View, ListRenderItem} from 'react-native';
+import {StyleSheet, FlatList, View, ListRenderItem} from 'react-native';
 import {useAppSelector} from 'redux/redux-hooks';
 import {UserMovement} from 'types';
 
@@ -20,8 +21,9 @@ export const MovementsScreen: FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontFamily: 'Poppins-Bold', fontSize: 20}}>Movements</Text>
+      <Header />
       <FlatList
+        style={styles.flatlist}
         data={userState?.movements ?? []}
         renderItem={renderItem}
         // Optimizations
@@ -46,5 +48,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
+  },
+  flatlist: {
+    width: '100%',
   },
 });

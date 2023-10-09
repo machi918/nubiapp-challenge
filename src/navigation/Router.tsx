@@ -8,6 +8,7 @@ import {useSecureStorage} from 'hooks/useSecureStorage';
 import {setIsGlobalLoading} from 'redux/slices/globalConfigurationSlice';
 import {User} from 'services/api';
 import {fillServices} from 'redux/slices/servicesSlice';
+import {fillNavigationRoutes} from 'redux/slices/navigationSlice';
 
 export const Router: FC = () => {
   const userState = useAppSelector(state => state.user);
@@ -24,6 +25,11 @@ export const Router: FC = () => {
         return {id: Math.random().toString(), title: item, icon: 'none'};
       });
       dispath(fillServices(servicesDummyData));
+      dispath(
+        fillNavigationRoutes(
+          userData?.navigation?.map(item => item?.toLowerCase()) ?? [],
+        ),
+      );
     }
     dispath(setIsGlobalLoading(false));
   };

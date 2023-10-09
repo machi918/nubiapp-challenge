@@ -3,10 +3,10 @@ import {View, StyleSheet} from 'react-native';
 
 import {CompleteLogoIcon} from 'assets/icons';
 
-export const LogoHeader: FC = () => {
+export const LogoHeader: FC<{color?: string}> = ({color}) => {
   return (
     <View style={styles.container}>
-      <CompleteLogoIcon />
+      <CompleteLogoIcon fill={color} />
     </View>
   );
 };

@@ -2,20 +2,43 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {TabBar} from 'navigation/components/TabBar';
-import {HomeScreen, ProfileScreen} from 'screens/main';
+import {ActivityScreen, CardScreen, ProfileScreen} from 'screens/main';
 import {HomeNavigator} from './HomeNavigator';
 
-const Tab = createBottomTabNavigator();
+export type TabBarParamList = {
+  HomeStack: undefined;
+  Card: undefined;
+  Activity: undefined;
+  Profile: undefined;
+};
+
+const Tab = createBottomTabNavigator<TabBarParamList>();
 
 export const TabNavigator = () => {
   return (
     <Tab.Navigator
       tabBar={props => <TabBar {...props} />}
       screenOptions={{headerShown: false}}>
-      <Tab.Screen name="HomeStack" component={HomeNavigator} />
-      <Tab.Screen name="Card" component={ProfileScreen} />
-      <Tab.Screen name="Activity" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="HomeStack"
+        component={HomeNavigator}
+        options={{title: 'inicio'}}
+      />
+      <Tab.Screen
+        name="Card"
+        component={CardScreen}
+        options={{title: 'tarjeta'}}
+      />
+      <Tab.Screen
+        name="Activity"
+        component={ActivityScreen}
+        options={{title: 'actividad'}}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{title: 'perfil'}}
+      />
     </Tab.Navigator>
   );
 };

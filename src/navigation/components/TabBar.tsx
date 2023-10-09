@@ -3,18 +3,15 @@ import {View, StyleSheet} from 'react-native';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
-// import {useAppSelector} from 'redux/redux-hooks';
+import {useAppSelector} from 'redux/redux-hooks';
 import {TabBarButton} from './TabBarButton';
-
-// const dummyData = ['Inicio', 'Tarjeta', 'Actividad', 'Perfil'];
 
 export const TabBar: FC<BottomTabBarProps> = ({
   state,
   descriptors,
   navigation,
 }) => {
-  //   const navigationState = useAppSelector(rstate => rstate.navigation);
-
+  const navigationState = useAppSelector(rstate => rstate.navigation); // Manejo dinámico del tab bar
   return (
     <View style={styles.tabContainer}>
       {state.routes.map((route, index) => {
@@ -46,7 +43,7 @@ export const TabBar: FC<BottomTabBarProps> = ({
             target: route.key,
           });
         };
-        return (
+        return navigationState?.includes(label.toString()) ? (
           <TabBarButton
             key={route.key}
             accessibilityRole="button"
@@ -56,9 +53,10 @@ export const TabBar: FC<BottomTabBarProps> = ({
             onPress={onPress}
             onLongPress={onLongPress}
             isFocused={isFocused}
+            routeName={route.name}
             label={label.toString()}
           />
-        );
+        ) : null;
       })}
     </View>
   );
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 14,
     borderRadius: 16,
-    height: 80,
+    height: 90,
     left: 10,
     right: 10,
     justifyContent: 'space-between',

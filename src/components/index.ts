@@ -4,6 +4,7 @@ export * from './Button/base/ButtonOutlinedBase';
 export * from './Button/base/ButtonTextBase';
 export * from './Button/base/constants';
 export * from './CurrentBalance/CurrentBalance';
+export * from './Header/Header';
 export * from './Header/LogoHeader';
 export * from './HomeDashboard/HomeDashbouard';
 export * from './HomeDashboard/ServiceItem';
