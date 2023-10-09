@@ -22,8 +22,8 @@ export const useSecureStorage = () => {
     });
   };
 
-  const removeItem = async () => {
-    return RNSInfo.deleteItem('key1', {
+  const removeItem = async (key: string) => {
+    return RNSInfo.deleteItem(key, {
       sharedPreferencesName: 'mySharedPrefs',
       keychainService: 'myKeychain',
     });

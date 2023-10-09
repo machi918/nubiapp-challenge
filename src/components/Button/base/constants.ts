@@ -6,6 +6,7 @@ export const COMMON_BUTTON_STYLES = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 14,
     height: 68,
+    paddingHorizontal: 20,
   },
   containerMEDIUM: {
     borderRadius: 10,

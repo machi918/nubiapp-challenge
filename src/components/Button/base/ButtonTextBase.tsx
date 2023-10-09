@@ -25,20 +25,13 @@ export const ButtonTextBase: FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <TouchableOpacity
-      {...props}
-      style={[
-        styles.container,
-        COMMON_BUTTON_STYLES.containerBIG,
-        size === 'medium' && {...COMMON_BUTTON_STYLES.containerMEDIUM},
-        size === 'small' && COMMON_BUTTON_STYLES.containerSMALL,
-        props.style,
-      ]}>
+    <TouchableOpacity {...props} style={[styles.container, props.style]}>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <Text
           style={[
+            styles.label,
             COMMON_BUTTON_STYLES.labelBIG,
             size === 'medium' && COMMON_BUTTON_STYLES.labelMEDIUM,
             size === 'small' && COMMON_BUTTON_STYLES.labelSMALL,
@@ -52,9 +45,9 @@ export const ButtonTextBase: FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#202BCE',
+    paddingHorizontal: 20,
   },
   label: {
-    color: 'white',
+    color: '#202BCE',
   },
 });

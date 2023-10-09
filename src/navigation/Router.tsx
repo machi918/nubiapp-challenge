@@ -3,9 +3,11 @@ import {FC, useEffect} from 'react';
 import {AuthNavigator, TabNavigator} from './index';
 import {SplashScreen} from './SplashScreen';
 import {useAppDispatch, useAppSelector} from 'redux/redux-hooks';
-import {modifyUser} from 'redux/slices/userSlice';
+import {setUser} from 'redux/slices/userSlice';
 import {useSecureStorage} from 'hooks/useSecureStorage';
 import {setIsGlobalLoading} from 'redux/slices/globalConfigurationSlice';
+import {User} from 'services/api';
+import {fillServices} from 'redux/slices/servicesSlice';
 
 export const Router: FC = () => {
   const userState = useAppSelector(state => state.user);
@@ -15,9 +17,13 @@ export const Router: FC = () => {
 
   const handleOnMountAction = async () => {
     const currentToken = await getItem('token');
-    console.log('Current Token:', currentToken);
     if (currentToken) {
-      dispath(modifyUser({token: currentToken}));
+      const userData = await User.decodeJWT(currentToken);
+      dispath(setUser({...userData, token: currentToken}));
+      const servicesDummyData = userData?.services?.map(item => {
+        return {id: Math.random().toString(), title: item, icon: 'none'};
+      });
+      dispath(fillServices(servicesDummyData));
     }
     dispath(setIsGlobalLoading(false));
   };
@@ -28,7 +34,6 @@ export const Router: FC = () => {
   }, []);
 
   if (isLoading) {
-    console.log('SplashScreen rendered');
     return <SplashScreen />;
   }
 

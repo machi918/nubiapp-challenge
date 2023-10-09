@@ -6,10 +6,12 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 
 import {useAppDispatch} from 'redux/redux-hooks';
-import {modifyUser, setUser} from 'redux/slices/userSlice';
+import {setUser} from 'redux/slices/userSlice';
 import {RHFPasswordField, RHFTextField} from 'components/input-fields';
 import {Button} from 'components';
 import {User} from 'services/api';
+import {fillServices} from 'redux/slices/servicesSlice';
+import {useSecureStorage} from 'hooks/useSecureStorage';
 
 export const signInValidationSchema = yup.object().shape({
   email: yup
@@ -34,6 +36,7 @@ const defaultValues: signInValidationType = {
 
 export const SignInScreen: FC = () => {
   const dispath = useAppDispatch();
+  const {setItem} = useSecureStorage();
 
   const {handleSubmit, control, formState} = useForm<signInValidationType>({
     defaultValues: defaultValues,
@@ -41,13 +44,15 @@ export const SignInScreen: FC = () => {
   });
 
   const handleFormSubmit = async (data: signInValidationType) => {
-    const {email, password} = data;
-    console.log('LOGIN data:', email, password, formState.isLoading);
     const response = await User.signIn(data);
     const userData = await User.decodeJWT(response?.JWT);
-    console.log('ME LOGUEO:', userData);
     if (userData) {
       dispath(setUser({...userData, token: response?.JWT}));
+      const servicesDummyData = userData?.services?.map(item => {
+        return {id: Math.random().toString(), title: item, icon: 'none'};
+      });
+      dispath(fillServices(servicesDummyData));
+      await setItem('token', response?.JWT);
     }
   };
 
@@ -105,22 +110,6 @@ export const SignInScreen: FC = () => {
           label="¿No tenés cuenta? Regístrate"
           type="outlined"
           size="big"
-          style={{marginTop: 10}}
-          onPress={() => console.log('TOCO CUENTA')}
-          disabled={formState.isSubmitting}
-        />
-        <Button
-          label="¿No tenés cuenta? Regístrate"
-          type="contained"
-          size="medium"
-          style={{marginTop: 10}}
-          onPress={() => console.log('TOCO CUENTA')}
-          disabled={formState.isSubmitting}
-        />
-        <Button
-          label="Cargá plata"
-          type="contained"
-          size="small"
           style={{marginTop: 10}}
           onPress={() => console.log('TOCO CUENTA')}
           disabled={formState.isSubmitting}
