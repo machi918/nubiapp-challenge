@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
 
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import {useAppDispatch} from 'redux/redux-hooks';
 import {modifyUser} from 'redux/slices/userSlice';
 import {RHFPasswordField, RHFTextField} from 'components/input-fields';
+import {Button} from 'components';
 
 export const signInValidationSchema = yup.object().shape({
   email: yup
@@ -48,28 +49,78 @@ export const SignInScreen: FC = () => {
     <View
       style={{
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 10,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        backgroundColor: '#202BCE',
       }}>
-      <Text>LOGIN</Text>
-      <RHFTextField
-        control={control}
-        name="email"
-        placeholder="Correo electrónico"
-      />
-      <RHFPasswordField
-        control={control}
-        name="password"
-        placeholder="Contraseña"
-      />
-      <Button
-        title="Go to Details"
-        onPress={handleSubmit(async values => {
-          await handleFormSubmit(values);
-        })}
-        disabled={formState.isSubmitting}
-      />
+      <View
+        style={{
+          height: '20%',
+          paddingHorizontal: 10,
+          paddingTop: 20,
+        }}>
+        <Text
+          style={{fontFamily: 'Poppins-Bold', fontSize: 40, color: 'white'}}>
+          logo nubi
+        </Text>
+        <Text
+          style={{fontFamily: 'Poppins-Bold', fontSize: 20, color: 'white'}}>
+          ¡Hola!
+        </Text>
+      </View>
+      <View
+        style={{
+          height: '80%',
+          backgroundColor: 'white',
+          borderTopRightRadius: 14,
+          borderTopLeftRadius: 14,
+          paddingVertical: 16,
+          paddingHorizontal: 10,
+        }}>
+        <RHFTextField
+          control={control}
+          name="email"
+          placeholder="Correo electrónico"
+        />
+        <RHFPasswordField
+          control={control}
+          name="password"
+          placeholder="Contraseña"
+        />
+        <Button
+          label="Iniciar Sesión"
+          type="contained"
+          size="big"
+          onPress={handleSubmit(async values => {
+            await handleFormSubmit(values);
+          })}
+          disabled={formState.isSubmitting}
+        />
+        <Button
+          label="¿No tenés cuenta? Regístrate"
+          type="outlined"
+          size="big"
+          style={{marginTop: 10}}
+          onPress={() => console.log('TOCO CUENTA')}
+          disabled={formState.isSubmitting}
+        />
+        <Button
+          label="¿No tenés cuenta? Regístrate"
+          type="contained"
+          size="medium"
+          style={{marginTop: 10}}
+          onPress={() => console.log('TOCO CUENTA')}
+          disabled={formState.isSubmitting}
+        />
+        <Button
+          label="Cargá plata"
+          type="contained"
+          size="small"
+          style={{marginTop: 10}}
+          onPress={() => console.log('TOCO CUENTA')}
+          disabled={formState.isSubmitting}
+        />
+      </View>
     </View>
   );
 };
