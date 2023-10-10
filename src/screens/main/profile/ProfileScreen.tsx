@@ -17,11 +17,15 @@ export const ProfileScreen: FC = () => {
   const [throwError, setThrowError] = useState<boolean>(false);
 
   const handleSignOut = async () => {
-    await removeItem('token');
-    dispatch(resetNavigationState());
-    dispatch(resetServicesState());
-    dispatch(resetUserState());
-    service.setToken(undefined); // Deletes token from axios default
+    try {
+      await removeItem('token');
+      dispatch(resetNavigationState());
+      dispatch(resetServicesState());
+      dispatch(resetUserState());
+      service.setToken(undefined); // Deletes token from axios default
+    } catch (error) {
+      // Should launch an Alert or Modal
+    }
   };
 
   return (

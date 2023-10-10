@@ -24,21 +24,27 @@ export const Router: FC = () => {
   const {getItem} = useSecureStorage();
 
   const handleOnMountAction = async () => {
-    const currentToken = await getItem('token');
-    if (currentToken) {
-      const userData = await User.decodeJWT(currentToken);
-      dispath(setUser({...userData, token: currentToken}));
-      const servicesDummyData = userData?.services?.map(item => {
-        return {id: Math.random().toString(), title: item, icon: 'none'};
-      });
-      dispath(fillServices(servicesDummyData));
-      dispath(
-        fillNavigationRoutes(
-          userData?.navigation?.map(item => item?.toLowerCase()) ?? [],
-        ),
-      );
+    try {
+      const currentToken = await getItem('token');
+      if (currentToken) {
+        const userData = await User.decodeJWT(currentToken);
+        dispath(setUser({...userData, token: currentToken}));
+        const servicesDummyData = userData?.services?.map(item => {
+          return {id: Math.random().toString(), title: item, icon: 'none'};
+        });
+        dispath(fillServices(servicesDummyData));
+        dispath(
+          fillNavigationRoutes(
+            userData?.navigation?.map(item => item?.toLowerCase()) ?? [],
+          ),
+        );
+      }
+      // dispath(setIsGlobalLoading(false));
+    } catch (error) {
+      // Should launch an Alert or Modal
+    } finally {
+      dispath(setIsGlobalLoading(false));
     }
-    dispath(setIsGlobalLoading(false));
   };
 
   useEffect(() => {

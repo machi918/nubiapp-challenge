@@ -47,20 +47,24 @@ export const SignInScreen: FC = () => {
   });
 
   const handleFormSubmit = async (data: signInValidationType) => {
-    const response = await User.signIn(data);
-    const userData = await User.decodeJWT(response?.JWT);
-    if (userData) {
-      dispath(setUser({...userData, token: response?.JWT}));
-      const servicesDummyData = userData?.services?.map(item => {
-        return {id: Math.random().toString(), title: item, icon: 'none'};
-      });
-      dispath(fillServices(servicesDummyData));
-      dispath(
-        fillNavigationRoutes(
-          userData?.navigation?.map(item => item?.toLowerCase()) ?? [],
-        ),
-      );
-      await setItem('token', response?.JWT);
+    try {
+      const response = await User.signIn(data);
+      const userData = await User.decodeJWT(response?.JWT);
+      if (userData) {
+        dispath(setUser({...userData, token: response?.JWT}));
+        const servicesDummyData = userData?.services?.map(item => {
+          return {id: Math.random().toString(), title: item, icon: 'none'};
+        });
+        dispath(fillServices(servicesDummyData));
+        dispath(
+          fillNavigationRoutes(
+            userData?.navigation?.map(item => item?.toLowerCase()) ?? [],
+          ),
+        );
+        await setItem('token', response?.JWT);
+      }
+    } catch (error) {
+      // Should launch an Alert or Modal
     }
   };
 
