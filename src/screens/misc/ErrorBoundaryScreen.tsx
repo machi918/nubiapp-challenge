@@ -6,16 +6,16 @@ import {Button, ScreenView, Text} from '@src/components';
 import {CustomLightTheme} from '@src/theme';
 
 export const ErrorBoundaryScreen: FC<FallbackComponentProps> = ({
-  error,
   resetError,
 }) => {
-  console.log('El ERROR ES:', error);
   return (
     <ScreenView
       alignItems="center"
       justifyContent="center"
       bgColor={CustomLightTheme.colors.primary}>
-      <Text>¡Ha ocurrido un error inesperado!</Text>
+      <Text color={CustomLightTheme.colors.card} fontSize={20}>
+        ¡Ha ocurrido un error inesperado!
+      </Text>
       <Button
         label="Reintentar"
         size="big"

@@ -1,8 +1,8 @@
-import {FC} from 'react';
+import {FC, useState} from 'react';
 
 import {useTheme} from '@react-navigation/native';
 
-import {Button, ScreenView, Text} from '@src/components';
+import {Button, DummyComponentWError, ScreenView, Text} from '@src/components';
 import {useSecureStorage} from '@src/hooks';
 import {useAppDispatch} from '@src/redux/redux-hooks';
 import {resetNavigationState} from '@src/redux/slices/navigationSlice';
@@ -14,6 +14,7 @@ export const ProfileScreen: FC = () => {
   const dispatch = useAppDispatch();
   const {colors} = useTheme();
   const {removeItem} = useSecureStorage();
+  const [throwError, setThrowError] = useState<boolean>(false);
 
   const handleSignOut = async () => {
     await removeItem('token');
@@ -42,10 +43,9 @@ export const ProfileScreen: FC = () => {
         type="text"
         label="Lanzar error"
         size="small"
-        onPress={() => {
-          throw Error('Error generado para testear');
-        }}
+        onPress={() => setThrowError(true)}
       />
+      {throwError && <DummyComponentWError />}
     </ScreenView>
   );
 };

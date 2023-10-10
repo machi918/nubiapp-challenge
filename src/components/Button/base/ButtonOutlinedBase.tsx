@@ -37,7 +37,10 @@ export const ButtonOutlinedBase: FC<ButtonProps> = ({
         props.style,
       ]}>
       {isLoading ? (
-        <ActivityIndicator />
+        <ActivityIndicator
+          size={'large'}
+          color={CustomLightTheme.colors.primary}
+        />
       ) : (
         <Text
           style={[

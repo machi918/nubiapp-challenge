@@ -37,7 +37,7 @@ export const ButtonContainedBase: FC<ButtonProps> = ({
         props.style,
       ]}>
       {isLoading ? (
-        <ActivityIndicator />
+        <ActivityIndicator size={'large'} color={'#FFFFFF'} />
       ) : (
         <Text
           style={[

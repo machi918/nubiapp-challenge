@@ -5,6 +5,7 @@ export * from './Button/base/ButtonTextBase';
 export * from './Button/base/constants';
 export * from './CenteredView/CenteredView';
 export * from './CurrentBalance/CurrentBalance';
+export * from './Dummy/DummyComponentWError';
 export * from './Header/Header';
 export * from './Header/LogoHeader';
 export * from './HomeDashboard/HomeDashboard';
