@@ -1,18 +1,20 @@
 import {FC} from 'react';
 import {ActivityIndicator, StyleSheet} from 'react-native';
 
-import {useTheme} from '@react-navigation/native';
-
 import {CenteredView, LogoHeader} from '@src/components';
+import {CustomLightTheme} from '@src/theme';
 
 export const SplashScreen: FC = () => {
-  const {colors} = useTheme();
   return (
-    <CenteredView style={[styles.container, {backgroundColor: colors.primary}]}>
-      <LogoHeader color={colors.card} />
+    <CenteredView
+      style={[
+        styles.container,
+        {backgroundColor: CustomLightTheme.colors.primary},
+      ]}>
+      <LogoHeader color={CustomLightTheme.colors.card} />
       <ActivityIndicator
         size={'large'}
-        color={colors.card}
+        color={CustomLightTheme.colors.card}
         style={styles.activity}
       />
     </CenteredView>
