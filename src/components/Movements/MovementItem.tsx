@@ -1,14 +1,13 @@
 import {FC} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {UserMovement} from 'types';
+import {StyleSheet, Text, View} from 'react-native';
+
 import Icon from 'react-native-vector-icons/Feather';
 
+import {UserMovement} from '@src/types';
+
 type Props = UserMovement & {
-  //   onPress: (id: string, title: string) => void;
   extraData?: {emoji: string; color: string};
 };
-
-// TODO: DECIR QUE ESTA MAL AMOUNT
 
 export const MovementItem: FC<Props> = ({amount, date, title}) => {
   return (

@@ -1,5 +1,6 @@
 import {FC} from 'react';
-import {Svg, G, Path, SvgProps} from 'react-native-svg';
+
+import {G, Path, Svg, SvgProps} from 'react-native-svg';
 
 export const CompleteLogoIcon: FC<SvgProps> = ({...props}) => {
   return (

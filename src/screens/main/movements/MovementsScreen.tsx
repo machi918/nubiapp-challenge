@@ -1,12 +1,15 @@
-import {Header} from 'components';
-import {MovementItem} from 'components/Movements/MovementItem';
 import {FC, useCallback} from 'react';
-import {StyleSheet, FlatList, View, ListRenderItem} from 'react-native';
-import {useAppSelector} from 'redux/redux-hooks';
-import {UserMovement} from 'types';
+import {FlatList, ListRenderItem, StyleSheet} from 'react-native';
+
+import {useTheme} from '@react-navigation/native';
+
+import {Header, MovementItem, ScreenView} from '@src/components';
+import {useAppSelector} from '@src/redux/redux-hooks';
+import {UserMovement} from '@src/types';
 
 export const MovementsScreen: FC = () => {
   const userState = useAppSelector(state => state.user);
+  const {colors} = useTheme();
 
   const renderItem: ListRenderItem<UserMovement> = useCallback(
     ({item}) => (
@@ -20,8 +23,11 @@ export const MovementsScreen: FC = () => {
   );
 
   return (
-    <View style={styles.container}>
-      <Header />
+    <ScreenView
+      style={styles.container}
+      alignItems="center"
+      bgColor={colors.card}>
+      <Header title="Movimientos" />
       <FlatList
         style={styles.flatlist}
         data={userState?.movements ?? []}
@@ -37,17 +43,14 @@ export const MovementsScreen: FC = () => {
           index,
         })}
       />
-    </View>
+    </ScreenView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingBottom: 100,
     paddingHorizontal: 20,
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
   },
   flatlist: {
     width: '100%',

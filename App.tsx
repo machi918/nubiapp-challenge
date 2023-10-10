@@ -1,23 +1,19 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {StatusBar} from 'react-native';
 
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 
-import {Router} from 'navigation';
-import {store} from 'redux/store';
+import {Router} from '@src/navigation';
+import {store} from '@src/redux/store';
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <Provider store={store}>
-      <SafeAreaView>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={'#FFFFFF'}
-        />
-      </SafeAreaView>
-      <Router />
+      <SafeAreaProvider>
+        <StatusBar barStyle={'light-content'} backgroundColor={'#202BCE'} />
+        <Router />
+      </SafeAreaProvider>
     </Provider>
   );
 }

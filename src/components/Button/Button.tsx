@@ -1,8 +1,8 @@
 import {FC} from 'react';
 import {TouchableOpacityProps} from 'react-native';
 
-import {ButtonOutlinedBase} from './base/ButtonOutlinedBase';
 import {ButtonContainedBase} from './base/ButtonContainedBase';
+import {ButtonOutlinedBase} from './base/ButtonOutlinedBase';
 import {ButtonTextBase} from './base/ButtonTextBase';
 
 type ButtonProps = TouchableOpacityProps & {

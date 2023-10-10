@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {TabBar} from 'navigation/components/TabBar';
-import {ActivityScreen, CardScreen, ProfileScreen} from 'screens/main';
+import {ActivityScreen, CardScreen, ProfileScreen} from '@src/screens/main';
+
 import {HomeNavigator} from './HomeNavigator';
+import {TabBar} from '../components/TabBar';
 
 export type TabBarParamList = {
   HomeStack: undefined;

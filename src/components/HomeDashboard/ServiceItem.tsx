@@ -1,6 +1,9 @@
 import {FC, useCallback} from 'react';
-import {TouchableOpacity, StyleSheet, View, Text} from 'react-native';
-import {ServicesType} from 'types';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+
+import {ServicesType} from '@src/types';
+
+import {CenteredView} from '../CenteredView/CenteredView';
 
 type Props = ServicesType & {
   onPress: (id: string, title: string) => void;
@@ -21,7 +24,7 @@ export const ServiceItem: FC<Props> = ({
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>
-      <View
+      <CenteredView
         style={[
           styles.iconContainer,
           !!extraData && {backgroundColor: extraData?.color},
@@ -29,7 +32,7 @@ export const ServiceItem: FC<Props> = ({
         <Text style={styles.iconText}>
           {extraData ? extraData?.emoji : icon}
         </Text>
-      </View>
+      </CenteredView>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
@@ -44,8 +47,6 @@ const styles = StyleSheet.create({
     height: 70,
     width: 70,
     borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   iconText: {
     fontSize: 40,

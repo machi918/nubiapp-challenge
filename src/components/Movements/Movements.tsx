@@ -1,11 +1,14 @@
 import {FC} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {UserMovement} from 'types';
-import {MovementItem} from './MovementItem';
-import {Button} from 'components';
+import {StyleSheet, Text, View} from 'react-native';
+
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {HomeStackParamList} from 'navigation/main-navigation/HomeNavigator';
+
+import {HomeStackParamList} from '@src/navigation';
+import {UserMovement} from '@src/types';
+
+import {MovementItem} from './MovementItem';
+import {Button} from '../Button/Button';
 
 type Props = {
   movements: UserMovement[]; //Should be number
@@ -32,7 +35,7 @@ export const Movements: FC<Props> = ({movements}) => {
         label="Ver más..."
         size="medium"
         onPress={() => navigation.navigate('MovementsScreen')}
-        style={{marginTop: 10, marginBottom: -10}}
+        style={styles.buttonTextStyle}
       />
     </View>
   );
@@ -65,4 +68,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Poppins-Regular',
   },
+  buttonTextStyle: {marginTop: 10, marginBottom: -10},
 });

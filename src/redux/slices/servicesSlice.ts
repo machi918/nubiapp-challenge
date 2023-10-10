@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
-import {ServicesType} from 'types';
+
+import {ServicesType} from '@src/types';
 
 const initialState: ServicesType[] = [];
 

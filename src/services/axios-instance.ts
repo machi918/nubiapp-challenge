@@ -1,10 +1,8 @@
 import axios, {AxiosError, AxiosInstance, AxiosResponse} from 'axios';
-import {IService} from './config-types';
-import {store} from 'redux/store';
-// import Config from 'react-native-config';
 
-// import {store} from '@redux';
-// import {IService} from './constants';
+import {store} from '@src/redux/store';
+
+import {IService} from './config-types';
 
 const API_URL = 'https://nubitestapi.free.beeceptor.com';
 // This should be in a .env file
@@ -17,7 +15,7 @@ const axiosInstance: AxiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  //timeout: 15000,
+  timeout: 5000,
 });
 
 axiosInstance.interceptors.request.use(

@@ -1,7 +1,11 @@
-import {Button} from 'components/Button/Button';
 import {FC, useState} from 'react';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
+
 import Icon from 'react-native-vector-icons/Entypo';
+
+import {Button} from '../Button/Button';
+import {CenteredView} from '../CenteredView/CenteredView';
+import {Text} from '../Text/Text';
 
 type Props = {
   name: string;
@@ -19,14 +23,14 @@ export const CurrentBalance: FC<Props> = ({
   const [showBalance, setShowBalance] = useState<boolean>(true);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcomeTitle}>Hola {name} tu saldo es</Text>
+    <CenteredView style={styles.container}>
+      <Text fontSize={18}>Hola {name} tu saldo es</Text>
       <View style={styles.balanceContainer}>
         <View style={styles.iconContainer} />
         <Text>
           ${' '}
           {
-            <Text style={styles.balanceText}>
+            <Text textType="medium" fontSize={40}>
               {showBalance
                 ? balance.toLocaleString('es-AR', {
                     minimumFractionDigits: 2,
@@ -46,7 +50,7 @@ export const CurrentBalance: FC<Props> = ({
           />
         </Pressable>
       </View>
-      <View style={styles.buttonsContainer}>
+      <CenteredView style={styles.buttonsContainer}>
         <Button
           label="+ Cargá plata"
           type="contained"
@@ -61,8 +65,8 @@ export const CurrentBalance: FC<Props> = ({
           size="small"
           onPress={onWithdrawMoneyPressed}
         />
-      </View>
-    </View>
+      </CenteredView>
+    </CenteredView>
   );
 };
 
@@ -72,8 +76,6 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     padding: 20,
     marginVertical: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
     width: '100%',
   },
   balanceContainer: {
@@ -83,20 +85,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 50,
   },
-  balanceText: {
-    fontFamily: 'Poppins-Medium',
-    fontSize: 40,
-    color: '#000000',
-  },
-  welcomeTitle: {
-    fontFamily: 'Poppins-Regular',
-    color: '#000000',
-    fontSize: 18,
-  },
   buttonsContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
     gap: 10,
     width: '100%',
     marginTop: 10,

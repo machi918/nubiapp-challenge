@@ -1,10 +1,10 @@
 import {FC} from 'react';
 import {
-  TouchableOpacityProps,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
   ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
 } from 'react-native';
 
 import {COMMON_BUTTON_STYLES} from './constants';

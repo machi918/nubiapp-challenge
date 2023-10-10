@@ -1,7 +1,13 @@
-import {CurrentBalance, HomeDashboard, LogoHeader, Movements} from 'components';
 import {FC} from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
-import {useAppSelector} from 'redux/redux-hooks';
+import {ScrollView, StyleSheet} from 'react-native';
+
+import {
+  CurrentBalance,
+  HomeDashboard,
+  LogoHeader,
+  Movements,
+} from '@src/components';
+import {useAppSelector} from '@src/redux/redux-hooks';
 
 export const HomeScreen: FC = () => {
   const userState = useAppSelector(state => state.user);
