@@ -3,9 +3,22 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["src/*"],
-      "tests": ["tests/*"],
-      "@components/*": ["src/components/*"],
+      // "*": ["src/*"],
+      // "~*": ["src/*"],
+      // "~*": ["./src/*"]
+      // "@components/*": ["src/components/*"],
+      // "@navigation/*": ["src/navigation/*"],
+      // "@assets/*": ["src/assets/*"],
+      // "@services/*": ["src/services/*"],
+      // "@navigation/*": ["src/navigation/*"],
+      // "@navigation/*": ["src/navigation/*"],
+      // "@navigation/*": ["src/navigation/*"],
+      // "@navigation/*": ["src/navigation/*"],
+      // "@navigation/*": ["src/navigation/*"],
+      "@src/*": ["src/*"],
+
+      // "@mb/*": ["src/*"]
     },
-  }
+  },
+  "exclude": ["node_modules"]
 }

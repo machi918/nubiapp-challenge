@@ -1,8 +1,8 @@
+import {ServicesType} from '@src/types';
+import {SERVICES_DUMMY_EXTRA_DATA} from '@src/utils';
 import {FC} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {ServicesType} from 'types';
 import {ServiceItem} from './ServiceItem';
-import {SERVICES_DUMMY_EXTRA_DATA} from 'utils/utils';
 
 type Props = {
   name: string;

@@ -1,9 +1,12 @@
-import {Header} from 'components';
-import {MovementItem} from 'components/Movements/MovementItem';
+// import {Header} from 'components';
+// import {MovementItem} from 'components/Movements/MovementItem';
+import {Header, MovementItem} from '@src/components';
+import {useAppSelector} from '@src/redux/redux-hooks';
+import {UserMovement} from '@src/types';
 import {FC, useCallback} from 'react';
 import {StyleSheet, FlatList, View, ListRenderItem} from 'react-native';
-import {useAppSelector} from 'redux/redux-hooks';
-import {UserMovement} from 'types';
+// import {useAppSelector} from 'redux/redux-hooks';
+// import {UserMovement} from 'types';
 
 export const MovementsScreen: FC = () => {
   const userState = useAppSelector(state => state.user);

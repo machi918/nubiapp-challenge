@@ -1,12 +1,19 @@
-import {Button} from 'components';
-import {useSecureStorage} from 'hooks/useSecureStorage';
+// import {Button} from 'components';
+// import {useSecureStorage} from 'hooks/useSecureStorage';
+import {Button} from '@src/components';
+import {useSecureStorage} from '@src/hooks';
+import {useAppDispatch} from '@src/redux/redux-hooks';
+import {resetErrorsState} from '@src/redux/slices/errorsSlice';
+import {resetNavigationState} from '@src/redux/slices/navigationSlice';
+import {resetServicesState} from '@src/redux/slices/servicesSlice';
+import {resetUserState} from '@src/redux/slices/userSlice';
 import {FC} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {useAppDispatch} from 'redux/redux-hooks';
-import {resetErrorsState} from 'redux/slices/errorsSlice';
-import {resetNavigationState} from 'redux/slices/navigationSlice';
-import {resetServicesState} from 'redux/slices/servicesSlice';
-import {resetUserState} from 'redux/slices/userSlice';
+// import {useAppDispatch} from 'redux/redux-hooks';
+// import {resetErrorsState} from 'redux/slices/errorsSlice';
+// import {resetNavigationState} from 'redux/slices/navigationSlice';
+// import {resetServicesState} from 'redux/slices/servicesSlice';
+// import {resetUserState} from 'redux/slices/userSlice';
 
 export const ProfileScreen: FC = () => {
   const dispatch = useAppDispatch();

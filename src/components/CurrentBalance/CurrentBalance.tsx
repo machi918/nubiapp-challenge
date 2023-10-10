@@ -1,7 +1,8 @@
-import {Button} from 'components/Button/Button';
+// import {Button} from 'components/Button/Button';
 import {FC, useState} from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
+import {Button} from '../Button/Button';
 
 type Props = {
   name: string;

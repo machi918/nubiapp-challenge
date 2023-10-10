@@ -1,6 +1,6 @@
+import {UserMovement} from '@src/types';
 import {FC} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import {UserMovement} from 'types';
 import Icon from 'react-native-vector-icons/Feather';
 
 type Props = UserMovement & {

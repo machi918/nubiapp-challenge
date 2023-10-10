@@ -1,6 +1,7 @@
+import {store} from '@src/redux/store';
 import axios, {AxiosError, AxiosInstance, AxiosResponse} from 'axios';
 import {IService} from './config-types';
-import {store} from 'redux/store';
+// import {store} from 'redux/store';
 // import Config from 'react-native-config';
 
 // import {store} from '@redux';

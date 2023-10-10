@@ -1,7 +1,12 @@
-import service from 'services/axios-instance';
-import {JWTType} from 'services/config-types';
+// import service from 'services/axios-instance';
+// import {JWTType} from 'services/config-types';
+// import jwt_decode from 'jwt-decode';
+// import {SignInType} from 'types';
 import jwt_decode from 'jwt-decode';
-import {SignInType} from 'types';
+
+import {SignInType} from '@src/types';
+import service from '../axios-instance';
+import {JWTType} from '../config-types';
 
 const PATH = {
   signIn: '/login',
