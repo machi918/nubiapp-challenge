@@ -7,6 +7,8 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 
+import {CustomLightTheme, DEFAULT_BORDER_RADIUS} from '@src/theme';
+
 import {COMMON_BUTTON_STYLES} from './constants';
 
 type ButtonProps = TouchableOpacityProps & {
@@ -14,7 +16,7 @@ type ButtonProps = TouchableOpacityProps & {
   /**
    * @default size big
    */
-  size: 'big' | 'medium' | 'small';
+  size?: 'big' | 'medium' | 'small';
   isLoading: boolean;
 };
 
@@ -54,13 +56,13 @@ export const ButtonOutlinedBase: FC<ButtonProps> = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
-    borderColor: '#202BCE',
+    borderColor: CustomLightTheme.colors.primary,
     borderWidth: 1,
-    borderRadius: 14,
+    borderRadius: DEFAULT_BORDER_RADIUS,
     height: 60,
   },
   label: {
-    color: '#202BCE',
+    color: CustomLightTheme.colors.primary,
     margin: 0,
     padding: 0,
   },

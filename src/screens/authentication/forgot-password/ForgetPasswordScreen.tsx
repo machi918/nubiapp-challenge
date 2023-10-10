@@ -9,7 +9,9 @@ export const ForgetPasswordScreen: FC = () => {
   return (
     <ScreenView alignItems="center" bgColor={colors.card}>
       <Header title={'Recuperar password'} />
-      <Text textType="bold">Olvidé mi contraseña</Text>
+      <Text textType="medium" fontSize={26}>
+        Olvidé mi contraseña
+      </Text>
     </ScreenView>
   );
 };

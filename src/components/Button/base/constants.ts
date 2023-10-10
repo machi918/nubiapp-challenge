@@ -1,12 +1,14 @@
 import {StyleSheet} from 'react-native';
 
+import {DEFAULT_BORDER_RADIUS, DEFAULT_H_PADDING} from '@src/theme';
+
 export const COMMON_BUTTON_STYLES = StyleSheet.create({
   containerBIG: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 14,
+    borderRadius: DEFAULT_BORDER_RADIUS,
     height: 68,
-    paddingHorizontal: 20,
+    paddingHorizontal: DEFAULT_H_PADDING,
   },
   containerMEDIUM: {
     borderRadius: 10,

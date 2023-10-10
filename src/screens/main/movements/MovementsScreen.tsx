@@ -1,10 +1,16 @@
 import {FC, useCallback} from 'react';
-import {FlatList, ListRenderItem, StyleSheet} from 'react-native';
+import {FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
 
 import {useTheme} from '@react-navigation/native';
 
-import {Header, MovementItem, ScreenView} from '@src/components';
+import {
+  Header,
+  MOVEMENT_ITEM_HEIGHT,
+  MovementItem,
+  ScreenView,
+} from '@src/components';
 import {useAppSelector} from '@src/redux/redux-hooks';
+import {DEFAULT_H_PADDING, DEFAULT_TAB_HEIGHT} from '@src/theme';
 import {UserMovement} from '@src/types';
 
 export const MovementsScreen: FC = () => {
@@ -22,6 +28,11 @@ export const MovementsScreen: FC = () => {
     [],
   );
 
+  const footerDummyItem: ListRenderItem<unknown> = useCallback(
+    () => <View style={styles.footer} />,
+    [],
+  );
+
   return (
     <ScreenView
       style={styles.container}
@@ -32,14 +43,15 @@ export const MovementsScreen: FC = () => {
         style={styles.flatlist}
         data={userState?.movements ?? []}
         renderItem={renderItem}
+        ListFooterComponent={footerDummyItem}
         // Optimizations
         initialNumToRender={20}
         maxToRenderPerBatch={20}
         windowSize={41}
         removeClippedSubviews={true}
         getItemLayout={(_data, index) => ({
-          length: 60, // Height of MovementItem
-          offset: 60 * index,
+          length: MOVEMENT_ITEM_HEIGHT, // Height of MovementItem
+          offset: MOVEMENT_ITEM_HEIGHT * index,
           index,
         })}
       />
@@ -50,9 +62,12 @@ export const MovementsScreen: FC = () => {
 const styles = StyleSheet.create({
   container: {
     paddingBottom: 100,
-    paddingHorizontal: 20,
+    paddingHorizontal: DEFAULT_H_PADDING,
   },
   flatlist: {
     width: '100%',
+  },
+  footer: {
+    height: DEFAULT_TAB_HEIGHT + 20,
   },
 });

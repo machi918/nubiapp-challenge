@@ -9,7 +9,9 @@ export const SignUpScreen: FC = () => {
   return (
     <ScreenView alignItems="center" bgColor={colors.card}>
       <Header title={'Registrarse'} />
-      <Text textType="bold">Registro</Text>
+      <Text textType="medium" fontSize={26}>
+        Registro
+      </Text>
     </ScreenView>
   );
 };

@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+import {DEFAULT_BORDER_RADIUS, DEFAULT_H_PADDING} from '@src/theme';
 import {ServicesType} from '@src/types';
 import {SERVICES_DUMMY_EXTRA_DATA} from '@src/utils';
 
@@ -46,9 +47,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     marginVertical: 10,
-    borderRadius: 14,
+    borderRadius: DEFAULT_BORDER_RADIUS,
     paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: DEFAULT_H_PADDING,
     width: '100%',
   },
   servicesContainer: {

@@ -3,11 +3,14 @@ import {StyleSheet, Text, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
 
+import {DEFAULT_BORDER_RADIUS} from '@src/theme';
 import {UserMovement} from '@src/types';
 
 type Props = UserMovement & {
   extraData?: {emoji: string; color: string};
 };
+
+export const MOVEMENT_ITEM_HEIGHT = 60; // Use for flatlist optimizations
 
 export const MovementItem: FC<Props> = ({amount, date, title}) => {
   return (
@@ -28,7 +31,7 @@ export const MovementItem: FC<Props> = ({amount, date, title}) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    height: MOVEMENT_ITEM_HEIGHT,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     height: 50,
     width: 50,
-    borderRadius: 14,
+    borderRadius: DEFAULT_BORDER_RADIUS,
     justifyContent: 'center',
     backgroundColor: '#b3f5b0',
     alignItems: 'center',

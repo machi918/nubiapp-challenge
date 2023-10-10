@@ -1,15 +1,14 @@
 import {FC} from 'react';
-import {StyleSheet, Text} from 'react-native';
 
 import {useTheme} from '@react-navigation/native';
 
-import {Button, ScreenView} from '@src/components';
+import {Button, ScreenView, Text} from '@src/components';
 import {useSecureStorage} from '@src/hooks';
 import {useAppDispatch} from '@src/redux/redux-hooks';
-import {resetErrorsState} from '@src/redux/slices/errorsSlice';
 import {resetNavigationState} from '@src/redux/slices/navigationSlice';
 import {resetServicesState} from '@src/redux/slices/servicesSlice';
 import {resetUserState} from '@src/redux/slices/userSlice';
+import service from '@src/services/axios-instance';
 
 export const ProfileScreen: FC = () => {
   const dispatch = useAppDispatch();
@@ -20,13 +19,15 @@ export const ProfileScreen: FC = () => {
     await removeItem('token');
     dispatch(resetNavigationState());
     dispatch(resetServicesState());
-    dispatch(resetErrorsState());
     dispatch(resetUserState());
+    service.setToken(undefined); // Deletes token from axios default
   };
 
   return (
     <ScreenView alignItems="center" justifyContent="center">
-      <Text style={[styles.text, {color: colors.text}]}>Profile Screen!</Text>
+      <Text textType="medium" fontSize={20} color={colors.text}>
+        Profile Screen!
+      </Text>
       <Button
         type="outlined"
         label="Cerrar sesión"
@@ -36,10 +37,3 @@ export const ProfileScreen: FC = () => {
     </ScreenView>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: 'Poppins-Medium',
-    fontSize: 20,
-  },
-});

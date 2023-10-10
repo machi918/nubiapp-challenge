@@ -7,6 +7,8 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 
+import {CustomLightTheme} from '@src/theme';
+
 import {COMMON_BUTTON_STYLES} from './constants';
 
 type ButtonProps = TouchableOpacityProps & {
@@ -53,9 +55,9 @@ export const ButtonContainedBase: FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#202BCE',
+    backgroundColor: CustomLightTheme.colors.primary,
   },
   label: {
-    color: 'white',
+    color: '#FFFFFF',
   },
 });

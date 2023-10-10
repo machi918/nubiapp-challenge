@@ -8,6 +8,7 @@ import {
   Movements,
 } from '@src/components';
 import {useAppSelector} from '@src/redux/redux-hooks';
+import {DEFAULT_H_PADDING} from '@src/theme';
 
 export const HomeScreen: FC = () => {
   const userState = useAppSelector(state => state.user);
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingBottom: 100,
-    paddingHorizontal: 20,
+    paddingHorizontal: DEFAULT_H_PADDING,
     alignItems: 'center',
   },
 });

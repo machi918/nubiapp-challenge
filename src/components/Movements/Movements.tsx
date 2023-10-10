@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {HomeStackParamList} from '@src/navigation';
+import {DEFAULT_BORDER_RADIUS} from '@src/theme';
 import {UserMovement} from '@src/types';
 
 import {MovementItem} from './MovementItem';
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     marginVertical: 10,
-    borderRadius: 14,
+    borderRadius: DEFAULT_BORDER_RADIUS,
     paddingVertical: 20,
     paddingHorizontal: 10,
     alignItems: 'center',

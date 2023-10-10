@@ -7,6 +7,8 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 
+import {CustomLightTheme, DEFAULT_H_PADDING} from '@src/theme';
+
 import {COMMON_BUTTON_STYLES} from './constants';
 
 type ButtonProps = TouchableOpacityProps & {
@@ -45,9 +47,9 @@ export const ButtonTextBase: FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingHorizontal: DEFAULT_H_PADDING,
   },
   label: {
-    color: '#202BCE',
+    color: CustomLightTheme.colors.primary,
   },
 });

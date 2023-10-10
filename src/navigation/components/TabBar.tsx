@@ -4,6 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
 import {useAppSelector} from '@src/redux/redux-hooks';
+import {DEFAULT_TAB_HEIGHT} from '@src/theme';
 
 import {TabBarButton} from './TabBarButton';
 
@@ -65,16 +66,16 @@ export const TabBar: FC<BottomTabBarProps> = ({
 
 const styles = StyleSheet.create({
   tabContainer: {
-    backgroundColor: '#FFFFFF',
+    height: DEFAULT_TAB_HEIGHT,
     position: 'absolute',
+    left: 20,
+    right: 20,
     bottom: 14,
+    padding: 10,
     borderRadius: 16,
-    height: 90,
-    left: 10,
-    right: 10,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    padding: 10,
     alignItems: 'center',
     zIndex: 1000,
     shadowColor: '#000',

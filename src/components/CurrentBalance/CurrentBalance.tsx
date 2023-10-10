@@ -3,6 +3,8 @@ import {Pressable, StyleSheet, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Entypo';
 
+import {DEFAULT_BORDER_RADIUS} from '@src/theme';
+
 import {Button} from '../Button/Button';
 import {CenteredView} from '../CenteredView/CenteredView';
 import {Text} from '../Text/Text';
@@ -72,29 +74,29 @@ export const CurrentBalance: FC<Props> = ({
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     backgroundColor: 'white',
-    borderRadius: 14,
+    borderRadius: DEFAULT_BORDER_RADIUS,
     padding: 20,
     marginVertical: 10,
-    width: '100%',
   },
   balanceContainer: {
+    height: 50,
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
-    height: 50,
   },
   buttonsContainer: {
-    flexDirection: 'row',
-    gap: 10,
     width: '100%',
     marginTop: 10,
+    flexDirection: 'row',
+    gap: 10,
   },
   iconContainer: {
+    width: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    width: 50,
   },
   customButton: {
     backgroundColor: '#2DDCB4',

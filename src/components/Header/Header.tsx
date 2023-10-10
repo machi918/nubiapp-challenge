@@ -25,13 +25,13 @@ export const Header: FC<Props> = ({title}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    width: '100%',
     paddingHorizontal: 10,
+    marginVertical: 10,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
     backgroundColor: '#FFFFFF',
-    marginVertical: 10,
   },
   iconContainer: {
     height: 24,
