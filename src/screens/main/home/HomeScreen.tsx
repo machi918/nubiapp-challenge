@@ -1,6 +1,8 @@
 import {FC} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
 import {
   CurrentBalance,
   HomeDashboard,
@@ -13,10 +15,19 @@ import {DEFAULT_H_PADDING} from '@src/theme';
 export const HomeScreen: FC = () => {
   const userState = useAppSelector(state => state.user);
   const userServices = useAppSelector(state => state.services);
+  const insets = useSafeAreaInsets();
 
   return (
     <ScrollView
-      style={styles.container}
+      style={[
+        styles.container,
+        {
+          paddingTop: insets.top,
+          paddingBottom: insets.bottom,
+          paddingLeft: insets.left,
+          paddingRight: insets.right,
+        },
+      ]}
       contentContainerStyle={styles.contentContainer}>
       <LogoHeader />
       <CurrentBalance
