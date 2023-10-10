@@ -1,4 +1,7 @@
+import {FC, useEffect} from 'react';
+
 import {NavigationContainer} from '@react-navigation/native';
+
 import {useSecureStorage} from '@src/hooks';
 import {useAppDispatch, useAppSelector} from '@src/redux/redux-hooks';
 import {setIsGlobalLoading} from '@src/redux/slices/globalConfigurationSlice';
@@ -6,16 +9,10 @@ import {fillNavigationRoutes} from '@src/redux/slices/navigationSlice';
 import {fillServices} from '@src/redux/slices/servicesSlice';
 import {setUser} from '@src/redux/slices/userSlice';
 import {User} from '@src/services/api';
-import {FC, useEffect} from 'react';
-import {AuthNavigator, TabNavigator} from './index';
+
 import {SplashScreen} from './SplashScreen';
-// import {useAppDispatch, useAppSelector} from 'redux/redux-hooks';
-// import {setUser} from 'redux/slices/userSlice';
-// import {useSecureStorage} from 'hooks/useSecureStorage';
-// import {setIsGlobalLoading} from 'redux/slices/globalConfigurationSlice';
-// import {User} from 'services/api';
-// import {fillServices} from 'redux/slices/servicesSlice';
-// import {fillNavigationRoutes} from 'redux/slices/navigationSlice';
+
+import {AuthNavigator, TabNavigator} from './index';
 
 export const Router: FC = () => {
   const userState = useAppSelector(state => state.user);

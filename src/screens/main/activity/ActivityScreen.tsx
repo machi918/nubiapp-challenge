@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 export const ActivityScreen: FC = () => {
   return (

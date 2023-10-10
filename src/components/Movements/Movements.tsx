@@ -1,14 +1,14 @@
 import {FC} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-// import {UserMovement} from 'types';
-import {MovementItem} from './MovementItem';
-// import {Button} from 'components';
+import {StyleSheet, Text, View} from 'react-native';
+
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {UserMovement} from '@src/types';
+
 import {HomeStackParamList} from '@src/navigation';
+import {UserMovement} from '@src/types';
+
+import {MovementItem} from './MovementItem';
 import {Button} from '../Button/Button';
-// import {HomeStackParamList} from 'navigation/main-navigation/HomeNavigator';
 
 type Props = {
   movements: UserMovement[]; //Should be number

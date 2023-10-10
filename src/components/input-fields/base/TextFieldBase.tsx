@@ -1,5 +1,5 @@
-import {ForwardedRef, LegacyRef, forwardRef} from 'react';
-import {TextInput, TextInputProps, View, Text, StyleSheet} from 'react-native';
+import {ForwardedRef, forwardRef, LegacyRef} from 'react';
+import {StyleSheet, Text, TextInput, TextInputProps, View} from 'react-native';
 
 type TextFieldBaseProps = TextInputProps & {
   error?: boolean;

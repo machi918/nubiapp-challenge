@@ -1,6 +1,7 @@
-import {CompleteLogoIcon} from '@src/assets';
 import {FC} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+
+import {CompleteLogoIcon} from '@src/assets';
 
 // import {CompleteLogoIcon} from 'assets/icons';
 

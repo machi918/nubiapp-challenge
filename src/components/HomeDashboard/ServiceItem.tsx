@@ -1,6 +1,7 @@
-import {ServicesType} from '@src/types';
 import {FC, useCallback} from 'react';
-import {TouchableOpacity, StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+
+import {ServicesType} from '@src/types';
 
 type Props = ServicesType & {
   onPress: (id: string, title: string) => void;

@@ -1,11 +1,11 @@
 import {FC} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
-// import {useAppSelector} from 'redux/redux-hooks';
-import {TabBarButton} from './TabBarButton';
 import {useAppSelector} from '@src/redux/redux-hooks';
+
+import {TabBarButton} from './TabBarButton';
 
 export const TabBar: FC<BottomTabBarProps> = ({
   state,

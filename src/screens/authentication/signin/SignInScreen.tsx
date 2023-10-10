@@ -1,31 +1,21 @@
 import {FC} from 'react';
-import {View, Text} from 'react-native';
+import {Text, View} from 'react-native';
 
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useForm} from 'react-hook-form';
+
+import {CompleteLogoIcon} from '@src/assets';
+import {Button, RHFPasswordField, RHFTextField} from '@src/components';
+import {useSecureStorage} from '@src/hooks';
+import {useAppDispatch} from '@src/redux/redux-hooks';
+import {fillNavigationRoutes} from '@src/redux/slices/navigationSlice';
+import {fillServices} from '@src/redux/slices/servicesSlice';
+import {setUser} from '@src/redux/slices/userSlice';
+import {User} from '@src/services/api';
 import {
   signInValidationSchema,
   signInValidationType,
 } from '@src/services/schemas';
-import {useAppDispatch} from '@src/redux/redux-hooks';
-import {useSecureStorage} from '@src/hooks';
-import {useForm} from 'react-hook-form';
-import {User} from '@src/services/api';
-import {setUser} from '@src/redux/slices/userSlice';
-import {fillServices} from '@src/redux/slices/servicesSlice';
-import {fillNavigationRoutes} from '@src/redux/slices/navigationSlice';
-import {CompleteLogoIcon} from '@src/assets';
-import {Button, RHFPasswordField, RHFTextField} from '@src/components';
-
-// import {useAppDispatch} from 'redux/redux-hooks';
-// import {setUser} from 'redux/slices/userSlice';
-// import {RHFPasswordField, RHFTextField} from 'components/input-fields';
-// import {Button} from 'components';
-// import {User} from 'services/api';
-// import {fillServices} from 'redux/slices/servicesSlice';
-// import {useSecureStorage} from 'hooks/useSecureStorage';
-// import {fillNavigationRoutes} from 'redux/slices/navigationSlice';
-// import {signInValidationSchema, signInValidationType} from 'services/schemas';
-// import {CompleteLogoIcon} from 'assets/icons';
 
 const defaultValues: signInValidationType = {
   email: '',

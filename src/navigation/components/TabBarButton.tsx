@@ -1,13 +1,11 @@
 import {FC} from 'react';
-import {Text, TouchableOpacity, StyleSheet} from 'react-native';
-
-import {TabBarParamList} from '../main-navigation/TabNavigator';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 import {BottomTabBarButtonProps} from '@react-navigation/bottom-tabs';
-import IconFeather from 'react-native-vector-icons/Feather';
 import IconEntypo from 'react-native-vector-icons/Entypo';
+import IconFeather from 'react-native-vector-icons/Feather';
 
-// import Icon from 'react-native-vector-icons/Feather';
+import {TabBarParamList} from '../main-navigation/TabNavigator';
 
 type TabBarButtonType = BottomTabBarButtonProps & {
   label: string;
