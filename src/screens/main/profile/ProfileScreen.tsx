@@ -34,6 +34,18 @@ export const ProfileScreen: FC = () => {
         size="big"
         onPress={handleSignOut}
       />
+
+      <Text fontSize={14} color={colors.text}>
+        Para testear el Error Boundary, seleccione:
+      </Text>
+      <Button
+        type="text"
+        label="Lanzar error"
+        size="small"
+        onPress={() => {
+          throw Error('Error generado para testear');
+        }}
+      />
     </ScreenView>
   );
 };

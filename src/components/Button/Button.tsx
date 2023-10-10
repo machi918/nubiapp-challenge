@@ -10,7 +10,7 @@ type ButtonProps = TouchableOpacityProps & {
   /**
    * @default type contained
    */
-  type: 'contained' | 'outlined' | 'text';
+  type?: 'contained' | 'outlined' | 'text';
   /**
    * @default size big
    */

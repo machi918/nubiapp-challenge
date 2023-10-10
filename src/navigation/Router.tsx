@@ -1,6 +1,7 @@
 import {FC, useEffect} from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
+import ErrorBoundary from 'react-native-error-boundary';
 
 import {useSecureStorage} from '@src/hooks';
 import {useAppDispatch, useAppSelector} from '@src/redux/redux-hooks';
@@ -8,6 +9,7 @@ import {setIsGlobalLoading} from '@src/redux/slices/globalConfigurationSlice';
 import {fillNavigationRoutes} from '@src/redux/slices/navigationSlice';
 import {fillServices} from '@src/redux/slices/servicesSlice';
 import {setUser} from '@src/redux/slices/userSlice';
+import {ErrorBoundaryScreen} from '@src/screens/misc';
 import {User} from '@src/services/api';
 import {CustomLightTheme} from '@src/theme';
 
@@ -49,8 +51,10 @@ export const Router: FC = () => {
   }
 
   return (
-    <NavigationContainer theme={CustomLightTheme}>
-      {userState?.token ? <TabNavigator /> : <AuthNavigator />}
-    </NavigationContainer>
+    <ErrorBoundary FallbackComponent={ErrorBoundaryScreen}>
+      <NavigationContainer theme={CustomLightTheme}>
+        {userState?.token ? <TabNavigator /> : <AuthNavigator />}
+      </NavigationContainer>
+    </ErrorBoundary>
   );
 };
