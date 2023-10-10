@@ -168,7 +168,7 @@ Algunas de las configuraciones relacionadas al proyecto:
 
 ## Descarga el APK
 
-Para descargar el APK de la App, debes ir [AQUÍ](https://drive.google.com/file/d/1N_nH10BBT-oDaI6WVnXp-jBJcdcVeQCu/view).
+Para descargar el APK de la App, debes ir [AQUÍ](https://drive.google.com/file/d/1XSVjPf3l1XMxpGsu5SvNot2-D5p3DfVm).
 
 Es posible que tengas que habilitar la instalación de apps no seguras dentro del dispositivo Android.
 
