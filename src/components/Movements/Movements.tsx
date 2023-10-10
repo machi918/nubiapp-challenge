@@ -35,7 +35,7 @@ export const Movements: FC<Props> = ({movements}) => {
         label="Ver más..."
         size="medium"
         onPress={() => navigation.navigate('MovementsScreen')}
-        style={{marginTop: 10, marginBottom: -10}}
+        style={styles.buttonTextStyle}
       />
     </View>
   );
@@ -68,4 +68,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Poppins-Regular',
   },
+  buttonTextStyle: {marginTop: 10, marginBottom: -10},
 });

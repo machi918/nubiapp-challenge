@@ -5,6 +5,7 @@ import {ServicesType} from '@src/types';
 import {SERVICES_DUMMY_EXTRA_DATA} from '@src/utils';
 
 import {ServiceItem} from './ServiceItem';
+import {CenteredView} from '../CenteredView/CenteredView';
 
 type Props = {
   name: string;
@@ -17,7 +18,7 @@ export const HomeDashboard: FC<Props> = ({name, services}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <CenteredView style={styles.container}>
       <Text style={styles.title}>👋 Hola {name},</Text>
       <Text style={styles.title}>¿Qué deseas hacer hoy?</Text>
       <View style={styles.servicesContainer}>
@@ -37,7 +38,7 @@ export const HomeDashboard: FC<Props> = ({name, services}) => {
           </Text>
         )}
       </View>
-    </View>
+    </CenteredView>
   );
 };
 
@@ -48,8 +49,6 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     paddingVertical: 20,
     paddingHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
     width: '100%',
   },
   servicesContainer: {

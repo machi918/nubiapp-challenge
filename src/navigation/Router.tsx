@@ -9,6 +9,7 @@ import {fillNavigationRoutes} from '@src/redux/slices/navigationSlice';
 import {fillServices} from '@src/redux/slices/servicesSlice';
 import {setUser} from '@src/redux/slices/userSlice';
 import {User} from '@src/services/api';
+import {CustomLightTheme} from '@src/theme';
 
 import {SplashScreen} from './SplashScreen';
 
@@ -48,7 +49,7 @@ export const Router: FC = () => {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={CustomLightTheme}>
       {userState?.token ? <TabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );

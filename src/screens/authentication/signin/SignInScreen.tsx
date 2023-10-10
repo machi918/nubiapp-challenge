@@ -1,12 +1,21 @@
 import {FC} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useNavigation, useTheme} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useForm} from 'react-hook-form';
 
 import {CompleteLogoIcon} from '@src/assets';
-import {Button, RHFPasswordField, RHFTextField} from '@src/components';
+import {
+  Button,
+  RHFPasswordField,
+  RHFTextField,
+  ScreenView,
+  Text,
+} from '@src/components';
 import {useSecureStorage} from '@src/hooks';
+import {AuthStackParamList} from '@src/navigation';
 import {useAppDispatch} from '@src/redux/redux-hooks';
 import {fillNavigationRoutes} from '@src/redux/slices/navigationSlice';
 import {fillServices} from '@src/redux/slices/servicesSlice';
@@ -17,6 +26,10 @@ import {
   signInValidationType,
 } from '@src/services/schemas';
 
+import {styles} from './styles';
+
+type NavProps = NativeStackNavigationProp<AuthStackParamList>;
+
 const defaultValues: signInValidationType = {
   email: '',
   password: '',
@@ -25,6 +38,8 @@ const defaultValues: signInValidationType = {
 export const SignInScreen: FC = () => {
   const dispath = useAppDispatch();
   const {setItem} = useSecureStorage();
+  const {colors} = useTheme();
+  const navigation = useNavigation<NavProps>();
 
   const {handleSubmit, control, formState} = useForm<signInValidationType>({
     defaultValues: defaultValues,
@@ -50,34 +65,14 @@ export const SignInScreen: FC = () => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#202BCE',
-      }}>
-      <View
-        style={{
-          height: '20%',
-          paddingHorizontal: 10,
-          paddingTop: 20,
-          justifyContent: 'space-evenly',
-        }}>
+    <ScreenView bgColor={colors.primary}>
+      <View style={styles.topContainer}>
         <CompleteLogoIcon fill={'#FFFFFF'} />
-        <Text
-          style={{fontFamily: 'Poppins-Bold', fontSize: 20, color: 'white'}}>
+        <Text textType="bold" fontSize={20} color="#FFFFFF">
           ¡Hola!
         </Text>
       </View>
-      <View
-        style={{
-          height: '80%',
-          backgroundColor: 'white',
-          borderTopRightRadius: 14,
-          borderTopLeftRadius: 14,
-          paddingVertical: 16,
-          paddingHorizontal: 10,
-          justifyContent: 'space-between',
-        }}>
+      <View style={styles.contentContainer}>
         <View>
           <RHFTextField
             control={control}
@@ -88,6 +83,14 @@ export const SignInScreen: FC = () => {
             control={control}
             name="password"
             placeholder="Contraseña"
+          />
+          <Button
+            label="¿Te olvidaste la contraseña?"
+            type="text"
+            size="small"
+            style={styles.buttonTextStyles}
+            onPress={() => navigation.navigate('ForgetPasswordScreen')}
+            disabled={formState.isSubmitting}
           />
         </View>
         <View>
@@ -105,12 +108,12 @@ export const SignInScreen: FC = () => {
             label="¿No tenés cuenta? Regístrate"
             type="outlined"
             size="big"
-            style={{marginTop: 10}}
-            onPress={() => console.log('TOCO CUENTA')}
+            style={styles.buttonStyles}
+            onPress={() => navigation.navigate('SignUpScreen')}
             disabled={formState.isSubmitting}
           />
         </View>
       </View>
-    </View>
+    </ScreenView>
   );
 };

@@ -1,22 +1,21 @@
 import {FC} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import {CompleteLogoIcon} from '@src/assets';
 
-// import {CompleteLogoIcon} from 'assets/icons';
+import {CenteredView} from '../CenteredView/CenteredView';
 
 export const LogoHeader: FC<{color?: string}> = ({color}) => {
   return (
-    <View style={styles.container}>
+    <CenteredView style={styles.container}>
       <CompleteLogoIcon fill={color} />
-    </View>
+    </CenteredView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginVertical: 5,
   },
 });

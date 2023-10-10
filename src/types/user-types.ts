@@ -9,6 +9,6 @@ export type UserType = {
 export type UserMovement = {
   title: string;
   amount: string; // Should be number
-  date: string; // should be in UTC
-  [x: string]: string; // Tuve que poner esto porque amount viene como "amount ". Un espacio al final en la API
+  date: string; // Should be in UTC. DD de mmmmm de YYYY format comes from the API.
+  [x: string]: string; // Had to add this because amount comes as "amount " from API. Theres is a space at the end.
 };
