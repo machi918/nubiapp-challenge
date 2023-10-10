@@ -96,6 +96,8 @@ Se han creado los siguientes slices:
 
 Una vez que se consulta el [endpoint](#apis), este devuelve un JWT el cual es decodeado utilizando la librería [jwt-decode](https://github.com/auth0/jwt-decode). Esta no verifica el jwt con la key, existen algunas librerías compatibles que lo logran pero no poseen muchos algoritmos.
 
+Además, para el guardado seguro del token, se utiliza la librería [react-native-sensitive-info](https://mcodex.dev/react-native-sensitive-info), el cual guarda la información en la keychain de iOS y keystore para cifrar/descifrar el key-value en Android.
+
 ### APIs
 
 Se consume el recurso https://nubitestapi.free.beeceptor.com/login el cual devuelve un JWT a decodificar utilizando [AXIOS](https://axios-http.com/es/).
