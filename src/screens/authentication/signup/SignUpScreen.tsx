@@ -1,10 +1,17 @@
 import {FC} from 'react';
-import {View, Text} from 'react-native';
+
+import {useTheme} from '@react-navigation/native';
+
+import {Header, ScreenView, Text} from '@src/components';
 
 export const SignUpScreen: FC = () => {
+  const {colors} = useTheme();
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>SIGNUP</Text>
-    </View>
+    <ScreenView alignItems="center" bgColor={colors.card}>
+      <Header title={'Registrarse'} />
+      <Text textType="medium" fontSize={26}>
+        Registro
+      </Text>
+    </ScreenView>
   );
 };

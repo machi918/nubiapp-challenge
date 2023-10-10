@@ -1,40 +1,30 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
 
-type NavigationType = {
-  id?: string;
-  route: string;
-  icon: string;
-};
-
-const initialState: NavigationType[] = [];
+const initialState: string[] = [];
 
 export const navigationSlice = createSlice({
   name: 'navigation',
   initialState,
   reducers: {
-    fillNavigationRoutes: (_, action: PayloadAction<NavigationType[]>) => {
+    fillNavigationRoutes: (_, action: PayloadAction<string[]>) => {
       return action.payload;
     },
-    addRoute: (state, action: PayloadAction<NavigationType>) => {
+    addRoute: (state, action: PayloadAction<string>) => {
       return [...state, action.payload];
     },
-    removeRouteByID: (state, action: PayloadAction<string>) => {
-      return state.filter(error => error.id !== action.payload);
-    },
     removeRouteByName: (state, action: PayloadAction<string>) => {
-      return state.filter(error => error.route !== action.payload);
+      return state.filter(error => error !== action.payload);
     },
-    resetServicesState: () => initialState,
+    resetNavigationState: () => initialState,
   },
 });
 
 export const {
   fillNavigationRoutes,
   addRoute,
-  removeRouteByID,
   removeRouteByName,
-  resetServicesState,
+  resetNavigationState,
 } = navigationSlice.actions;
 
 export default navigationSlice.reducer;

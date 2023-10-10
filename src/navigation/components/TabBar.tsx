@@ -1,20 +1,19 @@
 import {FC} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 
-// import {useAppSelector} from 'redux/redux-hooks';
-import {TabBarButton} from './TabBarButton';
+import {useAppSelector} from '@src/redux/redux-hooks';
+import {DEFAULT_TAB_HEIGHT} from '@src/theme';
 
-// const dummyData = ['Inicio', 'Tarjeta', 'Actividad', 'Perfil'];
+import {TabBarButton} from './TabBarButton';
 
 export const TabBar: FC<BottomTabBarProps> = ({
   state,
   descriptors,
   navigation,
 }) => {
-  //   const navigationState = useAppSelector(rstate => rstate.navigation);
-
+  const navigationState = useAppSelector(rstate => rstate.navigation); // Manejo dinámico del tab bar
   return (
     <View style={styles.tabContainer}>
       {state.routes.map((route, index) => {
@@ -46,7 +45,7 @@ export const TabBar: FC<BottomTabBarProps> = ({
             target: route.key,
           });
         };
-        return (
+        return navigationState?.includes(label.toString()) ? (
           <TabBarButton
             key={route.key}
             accessibilityRole="button"
@@ -56,9 +55,10 @@ export const TabBar: FC<BottomTabBarProps> = ({
             onPress={onPress}
             onLongPress={onLongPress}
             isFocused={isFocused}
+            routeName={route.name}
             label={label.toString()}
           />
-        );
+        ) : null;
       })}
     </View>
   );
@@ -66,17 +66,25 @@ export const TabBar: FC<BottomTabBarProps> = ({
 
 const styles = StyleSheet.create({
   tabContainer: {
-    backgroundColor: 'red',
+    height: DEFAULT_TAB_HEIGHT,
     position: 'absolute',
+    left: 20,
+    right: 20,
     bottom: 14,
+    padding: 10,
     borderRadius: 16,
-    height: 80,
-    left: 10,
-    right: 10,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    padding: 10,
     alignItems: 'center',
     zIndex: 1000,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });

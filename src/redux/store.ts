@@ -1,7 +1,6 @@
-import {configureStore, combineReducers} from '@reduxjs/toolkit';
+import {combineReducers, configureStore} from '@reduxjs/toolkit';
 
 import {
-  errorsSlice,
   globalConfigurationSlice,
   navigationSlice,
   servicesSlice,
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
   user: userSlice,
   navigation: navigationSlice,
   services: servicesSlice,
-  errors: errorsSlice,
   globalConfiguration: globalConfigurationSlice,
 });
 

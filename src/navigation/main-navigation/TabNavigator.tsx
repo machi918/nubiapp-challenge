@@ -1,18 +1,45 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {TabBar} from 'navigation/components/TabBar';
-import {HomeScreen, ProfileScreen} from 'screens/main';
+import {ActivityScreen, CardScreen, ProfileScreen} from '@src/screens/main';
 
-const Tab = createBottomTabNavigator();
+import {HomeNavigator} from './HomeNavigator';
+import {TabBar} from '../components/TabBar';
+
+export type TabBarParamList = {
+  HomeStack: undefined;
+  Card: undefined;
+  Activity: undefined;
+  Profile: undefined;
+};
+
+const Tab = createBottomTabNavigator<TabBarParamList>();
 
 export const TabNavigator = () => {
   return (
-    <Tab.Navigator tabBar={props => <TabBar {...props} />}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Card" component={ProfileScreen} />
-      <Tab.Screen name="Activity" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+    <Tab.Navigator
+      tabBar={props => <TabBar {...props} />}
+      screenOptions={{headerShown: false}}>
+      <Tab.Screen
+        name="HomeStack"
+        component={HomeNavigator}
+        options={{title: 'inicio'}}
+      />
+      <Tab.Screen
+        name="Card"
+        component={CardScreen}
+        options={{title: 'tarjeta'}}
+      />
+      <Tab.Screen
+        name="Activity"
+        component={ActivityScreen}
+        options={{title: 'actividad'}}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{title: 'perfil'}}
+      />
     </Tab.Navigator>
   );
 };

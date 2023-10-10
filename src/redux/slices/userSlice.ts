@@ -1,13 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
 
-type UserType = {
-  value: number;
-  email: string;
-  name: string;
-  lastName: string;
-  token: string;
-};
+import {UserType} from '@src/types';
 
 const initialState: UserType = {} as UserType;
 

@@ -1,14 +1,29 @@
 import {FC} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {ActivityIndicator, StyleSheet} from 'react-native';
+
+import {CenteredView, LogoHeader} from '@src/components';
+import {CustomLightTheme} from '@src/theme';
 
 export const SplashScreen: FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>SplashScreen</Text>
-    </View>
+    <CenteredView
+      style={[
+        styles.container,
+        {backgroundColor: CustomLightTheme.colors.primary},
+      ]}>
+      <LogoHeader color={CustomLightTheme.colors.card} />
+      <ActivityIndicator
+        size={'large'}
+        color={CustomLightTheme.colors.card}
+        style={styles.activity}
+      />
+    </CenteredView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {justifyContent: 'center', alignItems: 'center', flex: 1},
+  container: {flex: 1},
+  activity: {
+    marginTop: 20,
+  },
 });
